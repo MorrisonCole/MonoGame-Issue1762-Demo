@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 
 namespace GraphicsDeviceTest
 {
@@ -6,12 +6,19 @@ namespace GraphicsDeviceTest
 
     class MyGame : Game
     {
+        GraphicsDeviceManager graphicsDevice;
         public MyGame()
         {
-            var graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.ApplyChanges();
+            graphicsDevice = new GraphicsDeviceManager(this);
+        }
 
-            Debug.Assert(graphicsDeviceManager.GraphicsDevice != null);
+        protected override void Initialize()
+        {
+
+            graphicsDevice.ApplyChanges();
+
+            Debug.Assert(graphicsDevice.GraphicsDevice != null);
+            base.Initialize();
         }
     }
 }
